@@ -1,0 +1,41 @@
+.comment .list-item {
+    padding: 15px;
+    font-size: 15px;
+    color: #444444;
+    cursor: pointer;
+}
+
+.comment .list-item .sender-receiver {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.comment .list-item .sender,
+.comment .list-item .receiver {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 3px;
+    background-color: #eeeeee;
+}
+
+.comment .list-item .message {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comment .list-item .subject {
+    font-weight: bold;
+    color: #555555;
+}
+
+.comment .list-item .timestamp {
+    margin-left: 20px;
+    border-bottom: 2px dotted #aaa;
+}
+
+
+@media (max-width: 460px) {
+    .comment .list-item .sender-receiver {
+        line-height: 27px;
+    }
+}

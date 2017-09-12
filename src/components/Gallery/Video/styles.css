@@ -1,0 +1,190 @@
+.corporation {
+    min-height: 1055px;
+    padding: 25px 10px 25px 15px;
+}
+
+.corporation .logotype {
+    width: 160px;
+    margin-bottom: 10px;
+}
+
+.corporation .name {
+    display: block;
+    font-size: 1.6em;
+    color: #444444;
+}
+
+.corporation .reg-no {
+    display: block;
+    margin-top: 3px;
+    margin-bottom: 1.8em;
+    font-size: .9em;
+    font-style: italic;
+    color: #888;
+}
+
+.corporation .contact {
+    display: block;
+    font-size: 1em;
+    color: #444444;
+}
+
+.corporation .role {
+    display: block;
+    margin-top: 3px;
+    font-size: .9em;
+    font-style: italic;
+    color: #888;
+}
+
+.corporation .signatory {
+    display: block;
+    margin-top: 3px;
+    margin-bottom: 20px;
+    font-size: .9em;
+    color: #888;
+}
+
+.corporation .action-wrapper {
+    margin-bottom: 25px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.corporation .tag-wrapper {
+    margin-bottom: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.corporation .add-icon {
+    float: left;
+    margin-right: 8px;
+    color: #5a87c8;
+}
+
+.corporation .tag-icon {
+    margin-right: 7px;
+    color: #999999;
+}
+
+.corporation .add-participant {
+    float: left;
+    margin-top: -1px;
+    font-size: 0.9em;
+    color: #5a87c8;
+    cursor: pointer;
+}
+
+.corporation .customer-info {
+    margin-top: 15px;
+    border-bottom: 1px solid #bbbbbb;
+}
+
+.corporation .sign-box {
+    margin-top: 1.5em;
+}
+
+.corporation .sign-button {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 12px 15px 15px 15px;
+    border: 1px solid #539973;
+    border-radius: 3px;
+    background-color: #66b06b;
+    font-size: 1em;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+.corporation .sign-button img {
+    float: left;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.corporation .sign-button-wrapper {
+    display: inline-block;
+}
+
+.corporation .valid {
+    display: block;
+    margin-bottom: 30px;
+    font-size: .8em;
+    color: #444444;
+}
+
+.corporation .valid span {
+    text-decoration: underline;
+}
+
+.corporation .download {
+    color: #5a87c8;
+    font-size: .9em;
+    cursor: pointer;
+}
+
+.corporation .tag {
+    color: #444444;
+    font-size: .9em;
+}
+
+.corporation .imported-wrapper {
+    width: 100px;
+    padding: 4px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: #888888;
+    color: #ffffff;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.corporation .imported-wrapper span {
+    float: left;
+    margin-left: 10px;
+    margin-top: -1px;
+    color: #ffffff;
+}
+
+.corporation .imported-wrapper i {
+    float: right;
+    margin-right: 5px;
+    margin-top: -1px;
+}
+
+.corporation .add-tag {
+    float: left;
+    font-size: 0.9em;
+    color: #08A7C8;
+    cursor: pointer;
+}
+
+.corporation .add-tag-icon {
+    float: left;
+    margin-right: 8px;
+    color: #08A7C8;
+    font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+    .company {
+        width: auto;
+    }
+
+    .corporation {
+        padding: 25px;
+        background-color: #ffffff;
+        box-shadow: 0 0 2px 2px #dddddd;
+    }
+}
+
+@media (max-width: 460px) {
+    .corporation .sign-button {
+        width: 100%;
+    }
+}
