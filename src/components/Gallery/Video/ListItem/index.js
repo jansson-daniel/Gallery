@@ -16,9 +16,12 @@ export class ListItem extends Component {
     }
 
     render () {
+        console.log('foooofggggg', this.props.video)
         return (
             <li ref={(listItem) => { this.listItem = listItem; }} className="list-item">
-                <img src={this.props.item.links[0].href} />
+                    <a href={this.props.video[0].href}>
+                        <img src={this.props.video[1].href} />
+                    </a>
             </li>
         )
     }

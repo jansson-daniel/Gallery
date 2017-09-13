@@ -13,3 +13,17 @@ export const loadImages = (search) => (dispatch) => {
             console.log('error', error);
         });
 };
+
+export const loadVideos = (search) => (dispatch) => {
+    return request
+        .post('/videos/load', { 'search': search })
+        .then(({ data }) => {
+            dispatch({
+                type: 'LOAD_VIDEOS',
+                payload: data
+            });
+        })
+        .catch((error) => {
+            console.log('error', error);
+        });
+};

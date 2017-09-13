@@ -22,8 +22,8 @@ export class List extends Component {
     renderImages () {
         const images = this.props.images.collection || { items: [] };
 
-        return images.items.map((item) => {
-            return <ListItem item={item}/>;
+        return images.items.map((item, i) => {
+            return <ListItem item={item} index={i} />;
         })
     }
 

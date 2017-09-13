@@ -28,7 +28,8 @@ export class Image extends Component {
 Image.propTypes = { dispatch: PropTypes.func };
 
 const mapStateToProps = (state) => ({
-    images: state.image.list
+    images: state.image.list,
+    videos: state.video.list
 });
 
 export default connect(mapStateToProps)(Image)
