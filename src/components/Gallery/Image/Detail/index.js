@@ -7,9 +7,6 @@ export class Detail extends Component {
     constructor (props) {
         super(props);
 
-        this.state = {
-        };
-
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -28,8 +25,8 @@ export class Detail extends Component {
 
         return (
             <div>
-                <div onClick={this.handleClick} className="detail-close"></div>
-                <div className="detail-image" style={styles}></div>
+                <div onClick={this.handleClick} className="detail-close" />
+                <div className="detail-image" style={styles} />
             </div>
         )
     }

@@ -13,19 +13,13 @@ export class List extends Component {
         };
     }
 
-    componentDidMount () {
-        if (this.props.detail.length > 0) {
-            this.props.dispatch(loadImages('star'));
-        }
-    }
-
     componentWillReceiveProps (nextProps) {
         this.setState({ images: nextProps.list })
     }
 
     renderImages () {
         return this.state.images.map((item, i) => {
-            return <ListItem item={item.collection.items} index={i}/>;
+            return <ListItem key={i} item={item.collection.items} index={i}/>;
         })
 
     }

@@ -11,9 +11,10 @@ export default handleActions({
     LOAD_IMAGES: (state, action) => {
         return {
             ...state,
-            list: {}
-
+            list: []
         }
+
+
     },
     DETAIL_VIDEO: (state, action) => {
         return {
@@ -21,8 +22,16 @@ export default handleActions({
             detail: action.payload
 
         }
+    },
+    STATUS: (state, action) => {
+        return {
+            ...state,
+            active: action.payload === 'video'
+
+        }
     }
 }, {
-    list: {},
-    detail: []
+    list: [],
+    detail: [],
+    active: false
 })

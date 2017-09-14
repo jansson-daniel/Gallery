@@ -24,7 +24,7 @@ body {
     vertical-align: middle;
     white-space: nowrap;
     position: relative;
-    padding: 25px 18px 25px 22px;
+    margin: 25px 18px 25px 22px;
     overflow: hidden;
     float: left;
     width: 55%;
@@ -47,12 +47,17 @@ body {
 }
 
 .container-1 .icon{
+    background: #64cc64;
+    padding: 15px 15px;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+    top: 8px;
+    right: 0;
+    font-size: 21px;
     position: absolute;
-    top: 50%;
     margin-left: 10px;
     margin-top: -9px;
     z-index: 1;
-    color: #4f5b66;
 }
 
 .container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
@@ -65,10 +70,10 @@ body {
     height: 50px;
     background: #ffffff;
     border: none;
-    font-size: 10pt;
+    font-size: 12pt;
     float: left;
     color: #262626;
-    padding-left: 37px;
+    padding-left: 10px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;

@@ -20,7 +20,6 @@ render((
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRedirect to='/gallery'/>
           <Route path='/gallery' component={Gallery}/>
           <Route path='/gallery/detail' component={Detail}/>
           <Route path='/gallery/detailvideo' component={DetailVideo}/>

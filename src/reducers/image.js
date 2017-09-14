@@ -11,18 +11,25 @@ export default handleActions({
     RESET_MEDIA: (state, action) => {
         return {
             ...state,
-            list: {}
+            list: []
         }
+
 
     },
     DETAIL: (state, action) => {
-        console.log(action.payload)
         return {
             ...state,
             detail: action.payload
         }
+    },
+    STATUS: (state, action) => {
+        return {
+            ...state,
+            active: action.payload === 'image'
+        }
     }
 }, {
-    list: {},
-    detail: []
+    list: [],
+    detail: [],
+    active: true
 })

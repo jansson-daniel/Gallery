@@ -51,7 +51,6 @@ const loadVideos = (request, reply) => {
         });
 
         Promise.all(promises).then(() => {
-            console.log(videos)
             return reply(videos);
         })
     });
@@ -81,6 +80,3 @@ exports.register = (server, options, next) => {
 exports.register.attributes = {
   name: 'gallery'
 };
-
-
-//https://images-api.nasa.gov/search?q=moon&description=moon-landing&media_type=video

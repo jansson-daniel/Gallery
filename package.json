@@ -61,5 +61,8 @@
     "react-burger-menu": "*",
     "react-checkbox": "*",
     "rc-checkbox": ""
+  },
+  "devDependencies": {
+    "sass-loader": "^6.0.6"
   }
 }

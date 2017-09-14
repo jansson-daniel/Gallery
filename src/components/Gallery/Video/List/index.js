@@ -15,15 +15,8 @@ export class List extends Component {
         this.renderVideos = this.renderVideos.bind(this)
     }
 
-    componentDidMount () {
-        if (this.props.detail.length > 0) {
-            this.props.dispatch(loadVideos('star'));
-        }
-    }
-
     componentWillReceiveProps (nextProps) {
         const videos = [];
-
         nextProps.videos.forEach((video) => {
             if (video.hasOwnProperty('collection')) {
                 const videoArray = video.collection.items.filter((item) => {
@@ -42,7 +35,7 @@ export class List extends Component {
 
     renderVideos () {
         return this.state.videos.map((video, index) => {
-           return <ListItem video={video} index={index} />
+           return <ListItem key={index} video={video} index={index} />
        })
     }
 

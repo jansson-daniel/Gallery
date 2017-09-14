@@ -12,6 +12,10 @@ export class Video extends Component {
         }
     }
 
+    componentDidMount () {
+        this.setState({ videos: this.props.videos });
+    }
+
     componentWillReceiveProps (nextProps) {
         this.setState({ videos: nextProps.videos })
     }

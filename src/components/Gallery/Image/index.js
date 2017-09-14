@@ -12,6 +12,10 @@ export class Image extends Component {
         };
     }
 
+    componentDidMount () {
+        this.setState({ images: this.props.images });
+    }
+
     componentWillReceiveProps (nextProps) {
         this.setState({ images: nextProps.images })
     }

@@ -31,10 +31,10 @@ export class ListItem extends Component {
         }
 
         return (
-            <li ref={(listItem) => { this.listItem = listItem; }} className="list-item">
-                    <a onClick={this.handleClick} className="video-list-item" href={this.props.video[0].href}>
-                        <img src={this.props.video[1].href} />
-                    </a>
+            <li className="list-item">
+                <a onClick={this.handleClick} className="video-list-item" href={this.props.video[0].href}>
+                    <img src={this.props.video[1].href} />
+                </a>
             </li>
         )
     }
@@ -42,8 +42,4 @@ export class ListItem extends Component {
 
 ListItem.propTypes = { dispatch: PropTypes.func };
 
-const mapStateToProps = (state) => ({
-
-});
-
-export default connect(mapStateToProps)(ListItem)
+export default connect()(ListItem)

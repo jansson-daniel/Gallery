@@ -8,6 +8,7 @@ export class Detail extends Component {
         super(props);
 
         this.state = {
+            detail: []
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -26,11 +27,9 @@ export class Detail extends Component {
             backgroundImage: `url(${this.props.detail[0].href})`,
         };
 
-        console.log(this.props)
-
         return (
             <div>
-                <div onClick={this.handleClick} className="detail-close"></div>
+                <div onClick={this.handleClick} className="detail-close" />
                 <div className="detail-video" style={styles}>
                     <video width="100%" height="100%" controls>
                         <source src={this.props.detail[0].href} type="video/mp4" />
