@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { loadImages } from '../../../../actions/gallery'
 import ListItem from '../ListItem';
 import styles from './styles.css';
 
@@ -10,6 +11,10 @@ export class List extends Component {
         this.state = {
             images: []
         };
+    }
+
+    componentDidMount () {
+        this.props.dispatch(loadImages())
     }
 
     componentWillReceiveProps (nextProps) {

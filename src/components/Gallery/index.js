@@ -19,6 +19,13 @@ export class Gallery extends Component {
         this.setMediaType = this.setMediaType.bind(this);
     }
 
+    componentDidMount () {
+        console.log('detail', this.props.detail);
+        if (this.props.detail.length > 0) {
+            this.props.dispatch(loadImages('star'));
+        }
+    }
+
     setMediaType (event) {
         if (event.currentTarget.id === 'image-icon') {
             this.setState({ image: 'active', video: '', value: '' })
@@ -62,4 +69,8 @@ export class Gallery extends Component {
 
 Gallery.propTypes = { dispatch: PropTypes.func };
 
-export default connect()(Gallery)
+const mapStateToProps = (state) => ({
+    detail: state.image.detail
+});
+
+export default connect(mapStateToProps)(Gallery)
