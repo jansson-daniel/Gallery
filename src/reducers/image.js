@@ -14,7 +14,15 @@ export default handleActions({
             list: {}
         }
 
+    },
+    DETAIL: (state, action) => {
+        console.log(action.payload)
+        return {
+            ...state,
+            detail: action.payload
+        }
     }
 }, {
-    list: {}
+    list: {},
+    detail: []
 })

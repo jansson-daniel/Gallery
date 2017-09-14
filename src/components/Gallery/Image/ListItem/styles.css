@@ -8,14 +8,12 @@
 .list-item {
     padding: 10px;
     box-sizing: border-box;
+    min-height: 200px;
     background-color: #fff;
-    margin-left: -100%;
     margin-bottom: 15px;
     width: 90%;
+    margin-left: 5%;
     box-shadow: 0 0 8px 0 #999;
     transition: margin-left 1s ease;
 }
 
-.list li.slide {
-    margin-left: 5%;
-}

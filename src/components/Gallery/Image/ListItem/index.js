@@ -1,24 +1,47 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { routeActions } from 'redux-simple-router';
+import { setDetailImage } from '../../../../actions/gallery';
 import styles from './styles.css';
 
 export class ListItem extends Component {
+
     constructor (props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            images: []
+        };
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    componentDidMount () {
-        setTimeout(() => {
-            this.listItem.classList.add('slide');
-        }, 1000 * this.props.index);
+    componentDidMount() {
+        const images = this.props.item.filter((item) => {
+            return item.href.includes('small') || item.href.includes('thumb');
+        });
+
+        if (images.length === 2) {
+            this.setState({ images })
+        }
+    }
+
+    handleClick (event) {
+        event.preventDefault();
+        this.props.dispatch(setDetailImage(this.state.images));
+        this.props.dispatch(routeActions.push('/gallery/detail'));
     }
 
     render () {
+       if (!this.state.images.length) {
+           return null;
+       }
+
         return (
-            <li ref={(listItem) => { this.listItem = listItem; }} className="list-item">
-                <img src={this.props.item.links[0].href} />
+            <li className="list-item">
+                <a onClick={this.handleClick} href={this.state.images[0].href}>
+                    <img src={this.state.images[1].href} />
+                </a>
             </li>
         )
     }
@@ -26,8 +49,4 @@ export class ListItem extends Component {
 
 ListItem.propTypes = { dispatch: PropTypes.func };
 
-const mapStateToProps = (state) => ({
-
-});
-
-export default connect(mapStateToProps)(ListItem)
+export default connect()(ListItem)

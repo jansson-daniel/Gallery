@@ -9,17 +9,12 @@ export class ListItem extends Component {
         this.state = {};
     }
 
-    componentDidMount () {
-        setTimeout(() => {
-            this.listItem.classList.add('slide');
-        }, 1000 * this.props.index);
-    }
-
     render () {
-        console.log(this.props.video);
         if (this.props.video.length < 2) {
             return null;
         }
+
+        console.log('video', this.props.video)
 
         return (
             <li ref={(listItem) => { this.listItem = listItem; }} className="list-item">

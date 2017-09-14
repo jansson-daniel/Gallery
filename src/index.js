@@ -9,6 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 import reducers from './reducers';
 import App from './components/App';
 import Gallery from './components/Gallery';
+import Detail from './components/Gallery/Image/Detail';
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
 const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware, thunkMiddleware)(createStore);
@@ -20,6 +21,7 @@ render((
       <Route path="/" component={App}>
         <IndexRedirect to='/gallery'/>
           <Route path='/gallery' component={Gallery}/>
+          <Route path='/gallery/detail' component={Detail}/>
       </Route>
     </Router>
   </Provider>

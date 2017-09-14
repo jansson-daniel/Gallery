@@ -8,11 +8,8 @@ export class List extends Component {
         super(props);
 
         this.state = {
-            list: []
+            images: []
         };
-    }
-
-    componentDidMount () {
     }
 
     componentWillReceiveProps (nextProps) {
@@ -20,11 +17,10 @@ export class List extends Component {
     }
 
     renderImages () {
-        const images = this.props.images.collection || { items: [] };
-
-        return images.items.map((item, i) => {
-            return <ListItem item={item} index={i} />;
+        return this.state.images.map((item, i) => {
+            return <ListItem item={item.collection.items} index={i}/>;
         })
+
     }
 
     render () {
@@ -38,7 +34,4 @@ export class List extends Component {
 
 List.propTypes = { dispatch: PropTypes.func };
 
-const mapStateToProps = (state) => ({
-});
-
-export default connect(mapStateToProps)(List)
+export default connect()(List)

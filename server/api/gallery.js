@@ -1,24 +1,31 @@
 import Request from 'request';
 
 const loadImages = (request, reply) => {
-    console.log(request.payload)
+    const images = [];
+    const promises = [];
+
     Request(`https://images-api.nasa.gov/search?q=${request.payload.search}&media_type=image`, (error, response, body) => {
-        return reply(body);
+        const data = JSON.parse(body);
+        const ids = data.collection.items.map((item) => {
+            return item.data[0].nasa_id;
+        });
+
+        ids.forEach((id, i) => {
+            if (i < 21) {
+                const promise = new Promise((resolve, reject) => {
+                    Request(`https://images-api.nasa.gov/asset/${id}`, (error, response, body) => {
+                        images.push(JSON.parse(body));
+                        resolve();
+                    })
+                });
+                promises.push(promise);
+            }
+        });
+
+        Promise.all(promises).then(() => {
+            return reply(images);
+        })
     });
-};
-
-exports.register = (server, options, next) => {
-  server.route([
-    {
-      method: 'POST',
-      path: '/images/load',
-      config: {
-        handler: loadImages
-      }
-    }
-  ]);
-
-  next()
 };
 
 const loadVideos = (request, reply) => {
@@ -31,14 +38,16 @@ const loadVideos = (request, reply) => {
             return item.data[0].nasa_id;
         });
 
-        ids.forEach((id) => {
-            const promise = new Promise((resolve, reject) => {
-                Request(`https://images-api.nasa.gov/asset/${id}`, (error, response, body) => {
-                    videos.push(JSON.parse(body));
-                    resolve();
-                })
-            });
-            promises.push(promise);
+        ids.forEach((id, i) => {
+            if (i < 21) {
+                const promise = new Promise((resolve, reject) => {
+                    Request(`https://images-api.nasa.gov/asset/${id}`, (error, response, body) => {
+                        videos.push(JSON.parse(body));
+                        resolve();
+                    })
+                });
+                promises.push(promise);
+            }
         });
 
         Promise.all(promises).then(() => {

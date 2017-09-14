@@ -14,9 +14,6 @@ export class List extends Component {
         this.renderVideos = this.renderVideos.bind(this)
     }
 
-    componentDidMount () {
-    }
-
     componentWillReceiveProps (nextProps) {
         const videos = [];
 
@@ -37,8 +34,6 @@ export class List extends Component {
     }
 
     renderVideos () {
-        this.props.videos.collection = this.props.videos.collection || { items: [] };
-
         return this.state.videos.map((video, index) => {
            return <ListItem video={video} index={index} />
        })
@@ -55,7 +50,4 @@ export class List extends Component {
 
 List.propTypes = { dispatch: PropTypes.func };
 
-const mapStateToProps = (state) => ({
-});
-
-export default connect(mapStateToProps)(List)
+export default connect()(List)
