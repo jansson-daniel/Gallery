@@ -43,3 +43,10 @@ export const setDetailImage = (image) => (dispatch) => {
         payload: image
     });
 };
+
+export const setDetailVideo = (video) => (dispatch) => {
+    dispatch({
+        type: 'DETAIL_VIDEO',
+        payload: video
+    });
+};

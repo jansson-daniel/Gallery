@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { loadVideos } from '../../../../actions/gallery'
 import ListItem from '../ListItem';
 import styles from './styles.css';
 
@@ -12,6 +13,12 @@ export class List extends Component {
         };
 
         this.renderVideos = this.renderVideos.bind(this)
+    }
+
+    componentDidMount () {
+        if (this.props.detail.length > 0) {
+            this.props.dispatch(loadVideos('star'));
+        }
     }
 
     componentWillReceiveProps (nextProps) {
@@ -50,4 +57,8 @@ export class List extends Component {
 
 List.propTypes = { dispatch: PropTypes.func };
 
-export default connect()(List)
+const mapStateToProps = (state) => ({
+    detail: state.video.detail
+});
+
+export default connect(mapStateToProps)(List)

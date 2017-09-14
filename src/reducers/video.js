@@ -14,7 +14,15 @@ export default handleActions({
             list: {}
 
         }
+    },
+    DETAIL_VIDEO: (state, action) => {
+        return {
+            ...state,
+            detail: action.payload
+
+        }
     }
 }, {
     list: {},
+    detail: []
 })

@@ -14,7 +14,9 @@ export class List extends Component {
     }
 
     componentDidMount () {
-        this.props.dispatch(loadImages())
+        if (this.props.detail.length > 0) {
+            this.props.dispatch(loadImages('star'));
+        }
     }
 
     componentWillReceiveProps (nextProps) {
@@ -39,4 +41,8 @@ export class List extends Component {
 
 List.propTypes = { dispatch: PropTypes.func };
 
-export default connect()(List)
+const mapStateToProps = (state) => ({
+    detail: state.image.detail
+});
+
+export default connect(mapStateToProps)(List)

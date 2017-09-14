@@ -10,6 +10,7 @@ import reducers from './reducers';
 import App from './components/App';
 import Gallery from './components/Gallery';
 import Detail from './components/Gallery/Image/Detail';
+import DetailVideo from './components/Gallery/Video/Detail';
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
 const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware, thunkMiddleware)(createStore);
@@ -22,6 +23,7 @@ render((
         <IndexRedirect to='/gallery'/>
           <Route path='/gallery' component={Gallery}/>
           <Route path='/gallery/detail' component={Detail}/>
+          <Route path='/gallery/detailvideo' component={DetailVideo}/>
       </Route>
     </Router>
   </Provider>

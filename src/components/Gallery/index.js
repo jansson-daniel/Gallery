@@ -20,9 +20,8 @@ export class Gallery extends Component {
     }
 
     componentDidMount () {
-        console.log('detail', this.props.detail);
         if (this.props.detail.length > 0) {
-            this.props.dispatch(loadImages('star'));
+            this.props.dispatch(loadVideos('star'));
         }
     }
 
