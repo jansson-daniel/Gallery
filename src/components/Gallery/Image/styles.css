@@ -17,15 +17,17 @@ body {
     left: 0;
     top: 0;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
-    padding-bottom: 25px;
+    z-index: 9999999999;
 }
 
 .container-1{
     vertical-align: middle;
     white-space: nowrap;
     position: relative;
-    padding: 25px;
+    padding: 25px 18px 25px 22px;
     overflow: hidden;
+    float: left;
+    width: 55%;
 }
 
 .container-1 input#search::-webkit-input-placeholder {

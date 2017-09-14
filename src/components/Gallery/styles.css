@@ -8,11 +8,27 @@ body {
     top: 0;
     left: 0;
     min-height: 100%;
-    background-color: #3a3e46 !important;
+    background: #7b4397;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #dc2430, #7b4397);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#image-icon {
+    margin-right: 11px;
+}
+
+#video-icon, #image-icon {
+    width: 47px;
+    height: 47px;
+    float: left;
+    border-radius: 5px;
 }
 
 .media-type {
     text-align: center;
+    float: left;
+    margin-top: 25px;
 }
 
 .media-type span:first-child {

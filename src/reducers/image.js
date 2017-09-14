@@ -7,7 +7,14 @@ export default handleActions({
             list: action.payload
 
         }
+    },
+    RESET_MEDIA: (state, action) => {
+        return {
+            ...state,
+            list: {}
+        }
+
     }
 }, {
-    list: {},
+    list: {}
 })

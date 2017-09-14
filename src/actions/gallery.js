@@ -27,3 +27,10 @@ export const loadVideos = (search) => (dispatch) => {
             console.log('error', error);
         });
 };
+
+export const resetMedia = (search) => (dispatch) => {
+    dispatch({
+        type: 'RESET_MEDIA',
+        payload: null
+    });
+};

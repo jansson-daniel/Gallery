@@ -7,6 +7,13 @@ export default handleActions({
             list: action.payload
 
         }
+    },
+    LOAD_IMAGES: (state, action) => {
+        return {
+            ...state,
+            list: {}
+
+        }
     }
 }, {
     list: {},

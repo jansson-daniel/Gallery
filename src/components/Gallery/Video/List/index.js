@@ -21,10 +21,16 @@ export class List extends Component {
         const videos = [];
 
         nextProps.videos.forEach((video) => {
-            const videoArray = video.collection.items.filter((item) => {
-                return item.href.includes('mobile.mp4') || item.href.includes('mobile_thumb_00001');
-            });
-            videos.push(videoArray);
+            if (video.hasOwnProperty('collection')) {
+                const videoArray = video.collection.items.filter((item) => {
+                    if (item && item.hasOwnProperty('href')) {
+                        return item.href.includes('mobile.mp4') || item.href.includes('mobile_thumb_00002');
+                    }
+                });
+                if (videoArray) {
+                    videos.push(videoArray);
+                }
+            }
         });
 
         this.setState({ videos })
