@@ -32,7 +32,7 @@ export class ListItem extends Component {
 
         return (
             <li className="list-item">
-                <a onClick={this.handleClick} className="video-list-item" href={this.props.video[0].href}>
+                <a onClick={this.handleClick} className="link" href={this.props.video[0].href}>
                     <img src={this.props.video[1].href} />
                 </a>
             </li>

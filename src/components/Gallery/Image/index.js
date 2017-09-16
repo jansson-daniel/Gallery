@@ -27,7 +27,7 @@ export class Image extends Component {
 
     render () {
         return (
-            <div>
+            <div className="images">
                 <List list={this.state.images} />
             </div>
         )

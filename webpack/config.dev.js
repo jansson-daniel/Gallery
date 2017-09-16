@@ -26,6 +26,7 @@ module.exports = {
   resolve: {
     alias: {}
   },
+  watch: true,
   module: {
     loaders: [
       {
@@ -40,5 +41,8 @@ module.exports = {
         { test: /\.ttf/, loader: "file-loader"},
         { test: /\.eot/, loader: "file-loader"}
     ]
-  }
-}
+  },
+    node: 'empty',
+    tls: 'empty',
+    dns: 'empty'
+};

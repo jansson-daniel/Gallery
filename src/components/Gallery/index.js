@@ -73,9 +73,6 @@ export class Gallery extends Component {
         return (
             <div>
                 <div className="top-bar">
-                    <div className="header">
-                        <a href="/"><h1 className="title">Gallaxery</h1></a>
-                    </div>
                     <div className="box">
                         <div className="container-1">
                             <span onClick={this.handleClick} className="icon"><i className="fa fa-search" /></span>

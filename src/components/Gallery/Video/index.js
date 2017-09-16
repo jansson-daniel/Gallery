@@ -26,7 +26,7 @@ export class Video extends Component {
 
     render () {
         return (
-            <div>
+            <div className="videos">
                 <List videos={this.state.videos} />
             </div>
         )
