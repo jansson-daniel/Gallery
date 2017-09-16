@@ -1,9 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import ReactDOM from 'react-dom';
-import { loadImages, loadVideos, resetMedia, setStatus } from '../../actions/gallery';
 import Video from './Video';
 import Image from './Image';
+import {
+    loadImages,
+    loadVideos,
+    resetMedia,
+    setStatus,
+    activateLoader
+} from '../../actions/gallery';
+
 import styles from './styles.css';
 
 export class Gallery extends Component {
@@ -13,7 +19,8 @@ export class Gallery extends Component {
         this.state = {
             mediaType: 'image',
             image: 'active',
-            video: ''
+            video: '',
+            isLoading: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -23,8 +30,12 @@ export class Gallery extends Component {
 
     componentDidMount () {
         const html = document.getElementsByTagName('html')[0];
-        html.querySelector('.star-wrapper').remove();
-        html.style.overflow = 'auto';
+        const starWrapper = html.querySelector('.star-wrapper');
+
+        if (starWrapper) {
+            html.querySelector('.star-wrapper').remove();
+            html.style.overflow = 'auto';
+        }
 
         this.props.imageIsActive
             ? this.setState({ mediaType: 'image', image: 'active', video: '' })
@@ -34,7 +45,9 @@ export class Gallery extends Component {
     componentWillReceiveProps (nextProps) {
         nextProps.imageIsActive
             ? this.setState({ image: 'active', video: '' })
-            : this.setState({ video: 'active', image: '' })
+            : this.setState({ video: 'active', image: '' });
+
+        this.setState({ isLoading: nextProps.isLoading });
     }
 
     setMediaType (event) {
@@ -46,6 +59,7 @@ export class Gallery extends Component {
 
     handleClick () {
         this.props.dispatch(resetMedia());
+        this.props.dispatch(activateLoader());
         this.state.image === 'active'
             ? this.props.dispatch(loadImages(this.state.value))
             : this.props.dispatch(loadVideos(this.state.value));
@@ -58,7 +72,10 @@ export class Gallery extends Component {
     render () {
         return (
             <div>
-                <div className="wrapper">
+                <div className="top-bar">
+                    <div className="header">
+                        <a href="/"><h1 className="title">Gallaxery</h1></a>
+                    </div>
                     <div className="box">
                         <div className="container-1">
                             <span onClick={this.handleClick} className="icon"><i className="fa fa-search" /></span>
@@ -69,6 +86,9 @@ export class Gallery extends Component {
                             <svg id="video-icon" className={this.state.video} onClick={this.setMediaType} xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path fill="#3A3E46" d="M460.088 0H51.91C23.236 0 0 23.235 0 51.912V460.09C0 488.764 23.235 512 51.91 512H460.09C488.765 512 512 488.765 512 460.09V52.015C512.105 23.34 488.765 0 460.088 0zM314.61 50.028h44.48v44.48h-44.48v-44.48zm-80.798 0h44.48v44.48h-44.48v-44.48zm-80.903 0h44.48v44.48h-44.48v-44.48zM116.487 462.18H72.006V417.7h44.48v44.48zm0-367.67H72.006V50.03h44.48v44.48zm80.902 367.67h-44.48V417.7h44.48v44.48zm80.798 0h-44.48V417.7h44.48v44.48zm80.903 0h-44.48V417.7h44.48v44.48zm9.84-193.516l-170.703 98.59c-9.628 5.548-21.77-1.36-21.77-12.56v-197.18c0-11.2 12.142-18.106 21.77-12.56l170.702 98.59c9.732 5.55 9.732 19.573 0 25.12zm71.063 193.517h-44.48V417.7h44.48v44.48zm0-367.67h-44.48V50.03h44.48v44.48z"/></svg>
                         </div>
                     </div>
+                </div>
+                <div className="wrapper">
+                    <div className={this.state.isLoading} />
                     { this.state.image === 'active' ? (<Image images={this.props.images} />) : (<Video videos={this.props.videos} />) }
                 </div>
             </div>
@@ -82,7 +102,8 @@ const mapStateToProps = (state) => ({
     images: state.image.list,
     videos: state.video.list,
     videoIsActive: state.video.active,
-    imageIsActive: state.image.active
+    imageIsActive: state.image.active,
+    isLoading: state.image.isLoading
 });
 
 export default connect(mapStateToProps)(Gallery)

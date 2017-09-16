@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
 import List from './List';
+import { resetLoading } from '../../../actions/gallery';
 import styles from './styles.css';
 
 export class Video extends Component {
@@ -17,6 +18,9 @@ export class Video extends Component {
     }
 
     componentWillReceiveProps (nextProps) {
+        if (nextProps.videos.length) {
+            this.props.dispatch(resetLoading());
+        }
         this.setState({ videos: nextProps.videos })
     }
 

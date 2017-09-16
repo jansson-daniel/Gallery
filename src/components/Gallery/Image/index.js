@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
+import { resetLoading } from '../../../actions/gallery';
 import List from './List';
 import styles from './styles.css';
 
@@ -17,6 +18,10 @@ export class Image extends Component {
     }
 
     componentWillReceiveProps (nextProps) {
+        if (nextProps.images.length) {
+            this.props.dispatch(resetLoading());
+        }
+
         this.setState({ images: nextProps.images })
     }
 

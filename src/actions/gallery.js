@@ -35,6 +35,20 @@ export const resetMedia = (search) => (dispatch) => {
     });
 };
 
+export const activateLoader = () => (dispatch) => {
+    dispatch({
+        type: 'LOADER',
+        payload: null
+    });
+};
+
+export const resetLoading = () => (dispatch) => {
+    dispatch({
+        type: 'RESET_LOADING',
+        payload: null
+    });
+};
+
 export const setDetailImage = (image) => (dispatch) => {
     dispatch({
         type: 'DETAIL',

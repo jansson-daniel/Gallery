@@ -16,6 +16,23 @@ export default handleActions({
 
 
     },
+    LOADER: (state) => {
+        return {
+            ...state,
+            list: [],
+            isLoading: 'loader'
+        }
+
+
+    },
+    RESET_LOADING: (state) => {
+        return {
+            ...state,
+            isLoading: ''
+        }
+
+
+    },
     DETAIL: (state, action) => {
         return {
             ...state,
@@ -31,5 +48,6 @@ export default handleActions({
 }, {
     list: [],
     detail: [],
-    active: true
+    active: true,
+    isLoading: ''
 })
