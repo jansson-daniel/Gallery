@@ -11,8 +11,8 @@ export class App extends Component {
     return (
       <div>
         <div className="star-wrapper">
-          <a href="/gallery">
-            <h1 className="gallery-title">gallaxery</h1>
+          <a className="gallery-title" href="/gallery">
+            <h1>gallaxery</h1>
             <span className="enter">Enter</span>
           </a>
           <div id="stars" />
