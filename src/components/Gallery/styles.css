@@ -45,6 +45,11 @@
     left: 0;
 }
 
+.gallery .logo-link {
+    display: block;
+    float: left;
+}
+
 .gallery .search {
     vertical-align: middle;
     white-space: nowrap;
@@ -109,7 +114,6 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    padding-right: 20px;
 }
 
 @media screen and (orientation : landscape) {
