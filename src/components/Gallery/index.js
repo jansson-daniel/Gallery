@@ -21,7 +21,7 @@ export class Gallery extends Component {
             image: 'active',
             video: '',
             isLoading: '',
-            search: ''
+            search: 'star'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,7 +32,6 @@ export class Gallery extends Component {
     componentDidMount () {
         const html = document.getElementsByTagName('html')[0];
         const starWrapper = html.querySelector('.star-wrapper');
-        const search = this.props.images.length ? this.state.search : 'star';
 
         if (starWrapper) {
             html.querySelector('.star-wrapper').remove();
@@ -43,7 +42,7 @@ export class Gallery extends Component {
 
         if (this.props.imageIsActive) {
             this.setState({mediaType: 'image', image: 'active', video: ''});
-            this.props.dispatch(loadImages(search));
+            this.props.dispatch(loadImages(this.state.search));
         } else {
             this.setState({mediaType: 'video', video: 'active', image: ''});
             this.props.dispatch(loadVideos(this.state.search));
