@@ -1,7 +1,7 @@
 {
-  "name": "Contract",
+  "name": "Nasa Gallery",
   "version": "0.0.1",
-  "description": "A contract",
+  "description": "A gallery",
   "main": "index.js",
   "author": "Daniel Jansson",
   "scripts": {

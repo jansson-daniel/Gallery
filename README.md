@@ -1,7 +1,7 @@
-Name: Contract
+Name: Nasa Gallery
 Author: Daniel Jansson
-Date: 30/8-17
-Description: A cntract
+Date: 17/9-17
+Description: A gallery
 
 Techniques:
   - JavaScript
@@ -18,11 +18,6 @@ Requirements:
   - NPM
 
 Installation:
-  Run npm install and then "npm run dev"
-  to launch app on localhost:8000/contract.
-
-Instructions:
-  Select part of the text and then click on the speech bubble icon.
-  Enter a comment in the textfield for the selection. A click on the
-  comment highlights the selected text.
+  npm install and then "npm run dev"
+  to launch app, go to localhost:8000
 
