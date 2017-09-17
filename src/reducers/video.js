@@ -13,8 +13,12 @@ export default handleActions({
             ...state,
             list: []
         }
-
-
+    },
+    RESET_MEDIA: (state, action) => {
+        return {
+            ...state,
+            list: []
+        }
     },
     DETAIL_VIDEO: (state, action) => {
         return {

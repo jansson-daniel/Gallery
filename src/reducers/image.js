@@ -13,8 +13,6 @@ export default handleActions({
             ...state,
             list: []
         }
-
-
     },
     LOADER: (state) => {
         return {

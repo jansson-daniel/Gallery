@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styles from './styles.css';
+import stars from './stars.css';
 
 export class App extends Component {
   constructor (props) {
@@ -9,11 +10,11 @@ export class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className="app">
         <div className="star-wrapper">
           <a className="gallery-title" href="/gallery">
-            <h1>gallaxery</h1>
-            <span className="enter">Enter</span>
+            <img className='logo' src="/images/logo.png" />
+            <h1>gallery</h1>
           </a>
           <div id="stars" />
           <div id="stars2" />
