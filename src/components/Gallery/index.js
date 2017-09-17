@@ -21,7 +21,7 @@ export class Gallery extends Component {
             image: 'active',
             video: '',
             isLoading: '',
-            search: 'star'
+            search: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
