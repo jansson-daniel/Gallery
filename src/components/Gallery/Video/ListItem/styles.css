@@ -35,12 +35,8 @@
     background-repeat: no-repeat;
 }
 
-#image-icon path,
-#video-icon path {
-    fill: #575c69;
-}
-
-#image-icon.active path,
-#video-icon.active path {
-    fill: #9a9da5;
+@media screen and (orientation : landscape) {
+    .videos .list-item {
+        flex: 32% 0;
+    }
 }
