@@ -103,10 +103,9 @@
 }
 
 .gallery .search input#search {
-    position: fixed;
+    position: absolute;
     width: 68%;
     height: 45px;
-    right: 10px;
     background: #ffffff;
     border: none;
     font-size: 12pt;
