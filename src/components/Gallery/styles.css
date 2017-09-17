@@ -16,11 +16,9 @@
 .gallery .media-type {
     width: 100%;
     text-align: center;
-    background: #333;
+    background: #222;
     position: absolute;
     top: 80px;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
 }
 
 .gallery .media-type span:first-child {
@@ -28,7 +26,7 @@
 }
 
 .gallery .media-type span.active {
-    background-color: #555;
+    background-color: #003c92;
 }
 
 .gallery .media-type span {
@@ -74,7 +72,7 @@
 }
 
 .gallery .search .icon{
-    background: #0d80d8;
+    background: #003c92;
     padding: 11px 15px;
     border-radius: 0 5px 5px 0;
     color: #fff;

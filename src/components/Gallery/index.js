@@ -56,6 +56,8 @@ export class Gallery extends Component {
     }
 
     setMediaType (event) {
+        this.props.dispatch(activateLoader());
+
         if (this.state.search.length) {
             if (event.currentTarget.id === 'image-icon') {
                 this.props.dispatch(setStatus('image'));
