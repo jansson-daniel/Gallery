@@ -1,4 +1,4 @@
-Name: Nasa Gallery
+Name: Gallery
 Author: Daniel Jansson
 Date: 17/9-17
 Description: A gallery
