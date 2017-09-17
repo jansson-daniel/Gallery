@@ -40,10 +40,14 @@ export class Gallery extends Component {
 
         if (this.props.imageIsActive) {
             this.setState({mediaType: 'image', image: 'active', video: ''});
-            this.props.dispatch(loadImages(this.state.search));
+            if (this.state.search.length) {
+                this.props.dispatch(loadImages(this.state.search));
+            }
         } else {
             this.setState({mediaType: 'video', video: 'active', image: ''});
-            this.props.dispatch(loadVideos(this.state.search));
+            if (this.state.search.length) {
+                this.props.dispatch(loadVideos(this.state.search));
+            }
         }
     }
 
@@ -56,29 +60,29 @@ export class Gallery extends Component {
     }
 
     setMediaType (event) {
-        this.props.dispatch(activateLoader());
-
-        if (this.state.search.length) {
-            if (event.currentTarget.id === 'image-icon') {
-                this.props.dispatch(setStatus('image'));
-                if (!this.props.images.length) {
-                    this.props.dispatch(loadImages(this.state.search));
-                }
-            } else {
-                this.props.dispatch(setStatus('video'));
-                if (!this.props.videos.length) {
-                    this.props.dispatch(loadVideos(this.state.search));
-                }
+        if (event.currentTarget.id === 'image-icon') {
+            this.props.dispatch(setStatus('image'));
+            if (!this.props.images.length && this.state.search.length) {
+                this.props.dispatch(activateLoader());
+                this.props.dispatch(loadImages(this.state.search));
+            }
+        } else {
+            this.props.dispatch(setStatus('video'));
+            if (!this.props.videos.length && this.state.search.length) {
+                this.props.dispatch(activateLoader());
+                this.props.dispatch(loadVideos(this.state.search));
             }
         }
     }
 
     handleClick () {
-        this.props.dispatch(resetMedia());
-        this.props.dispatch(activateLoader());
-        this.state.image === 'active'
-            ? this.props.dispatch(loadImages(this.state.search))
-            : this.props.dispatch(loadVideos(this.state.search));
+        if (this.state.search.length) {
+            this.props.dispatch(resetMedia());
+            this.props.dispatch(activateLoader());
+            this.state.image === 'active'
+                ? this.props.dispatch(loadImages(this.state.search))
+                : this.props.dispatch(loadVideos(this.state.search));
+        }
     }
 
     handleChange (event) {
