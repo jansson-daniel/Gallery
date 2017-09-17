@@ -1,4 +1,4 @@
-.detail-image {
+.image-detail .detail-image {
     background-size: cover;
     background-repeat: no-repeat;
     position: fixed;
@@ -10,7 +10,7 @@
     background-color: #000;
 }
 
-.detail-close {
+.image-detail .detail-close {
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6I0ZGRkZGRjt9PC9zdHlsZT48Zz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzAxLjMsMjU2TDUwMi42LDU0LjdjMTIuNS0xMi41LDEyLjUtMzIuOCwwLTQ1LjNjLTEyLjUtMTIuNS0zMi44LTEyLjUtNDUuMywwTDI1NiwyMTAuN0w1NC43LDkuNEM0Mi4xLTMuMSwyMS45LTMuMSw5LjQsOS40Yy0xMi41LDEyLjUtMTIuNSwzMi44LDAsNDUuM0wyMTAuNywyNTZMOS40LDQ1Ny4zYy0xMi41LDEyLjUtMTIuNSwzMi44LDAsNDUuM2M2LjMsNi4yLDE0LjUsOS40LDIyLjYsOS40czE2LjQtMy4xLDIyLjYtOS40TDI1NiwzMDEuM2wyMDEuMywyMDEuM2M2LjMsNi4zLDE0LjUsOS40LDIyLjYsOS40YzguMiwwLDE2LjQtMy4xLDIyLjYtOS40YzEyLjUtMTIuNSwxMi41LTMyLjgsMC00NS4zTDMwMS4zLDI1NnoiLz48L2c+PC9zdmc+);
     background-color: #003c92;
     border-radius: 50%;
@@ -26,7 +26,7 @@
     z-index: 999;
 }
 
-.info-close {
+.image-detail .info-close {
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzAwM0M5Mjt9PC9zdHlsZT48Zz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzAxLjMsMjU2TDUwMi42LDU0LjdjMTIuNS0xMi41LDEyLjUtMzIuOCwwLTQ1LjNjLTEyLjUtMTIuNS0zMi44LTEyLjUtNDUuMywwTDI1NiwyMTAuN0w1NC43LDkuNEM0Mi4xLTMuMSwyMS45LTMuMSw5LjQsOS40Yy0xMi41LDEyLjUtMTIuNSwzMi44LDAsNDUuM0wyMTAuNywyNTZMOS40LDQ1Ny4zYy0xMi41LDEyLjUtMTIuNSwzMi44LDAsNDUuM2M2LjMsNi4yLDE0LjUsOS40LDIyLjYsOS40czE2LjQtMy4xLDIyLjYtOS40TDI1NiwzMDEuM2wyMDEuMywyMDEuM2M2LjMsNi4zLDE0LjUsOS40LDIyLjYsOS40YzguMiwwLDE2LjQtMy4xLDIyLjYtOS40YzEyLjUtMTIuNSwxMi41LTMyLjgsMC00NS4zTDMwMS4zLDI1NnoiLz48L2c+PC9zdmc+);
     background-color: #fff;
     border-radius: 50%;
@@ -42,7 +42,7 @@
     z-index: 99999;
 }
 
-.meta {
+.image-detail .meta {
     background-color: #003c92;
     color: #fff;
     position: absolute;
@@ -55,15 +55,15 @@
     box-sizing: border-box;
 }
 
-.meta h3 {
+.image-detail .meta h3 {
     font-family: 'Aviano Future Black Fast', 'sans-serif';
 }
 
-.meta p {
+.image-detail .meta p {
     font-size: 13px;
 }
 
-.detail-info {
+.image-detail .detail-info {
     z-index: 9999;
     text-align: center;
     font-size: 28px;

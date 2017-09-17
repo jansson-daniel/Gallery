@@ -42,7 +42,7 @@ export class Detail extends Component {
         };
 
         return (
-            <div>
+            <div className="image-detail">
                 <div onClick={this.handleClick} className="detail-close" />
                 <div onClick={this.handleInfo} className="detail-info">i</div>
                 <div className="detail-image" style={styles} />

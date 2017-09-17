@@ -11,8 +11,6 @@ export const loadImages = (search) => (dispatch) => {
                 item.collection.meta = meta[i];
             });
 
-            console.log(images);
-
             dispatch({
                 type: 'LOAD_IMAGES',
                 payload: images
