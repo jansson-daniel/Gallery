@@ -103,12 +103,12 @@
 }
 
 .gallery .search input#search {
+    position: fixed;
     width: 72%;
     height: 45px;
     background: #ffffff;
     border: none;
     font-size: 12pt;
-    float: left;
     color: #262626;
     padding-left: 10px;
     -webkit-border-radius: 3px;
