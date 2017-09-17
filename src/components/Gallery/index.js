@@ -38,6 +38,8 @@ export class Gallery extends Component {
             html.style.overflow = 'auto';
         }
 
+        this.props.dispatch(activateLoader());
+
         if (this.props.imageIsActive) {
             this.setState({mediaType: 'image', image: 'active', video: ''});
             this.props.dispatch(loadImages(this.state.search));
