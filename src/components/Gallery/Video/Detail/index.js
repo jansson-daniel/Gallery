@@ -23,8 +23,9 @@ export class Detail extends Component {
     }
 
     render () {
+        console.log(this.props)
         const styles = {
-            backgroundImage: `url(${this.props.detail[0].href})`,
+            backgroundImage: `url(${this.props.detail.video[0].href})`,
         };
 
         return (
@@ -32,7 +33,7 @@ export class Detail extends Component {
                 <div onClick={this.handleClick} className="detail-close" />
                 <div className="detail-video" style={styles}>
                     <video width="100%" height="100%" controls autoPlay>
-                        <source src={this.props.detail[0].href} type="video/mp4" />
+                        <source src={this.props.detail.video[0].href} type="video/mp4" />
                     </video>
                 </div>
             </div>

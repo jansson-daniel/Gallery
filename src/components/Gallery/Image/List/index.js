@@ -19,7 +19,7 @@ export class List extends Component {
 
     renderImages () {
         return this.state.images.map((item, i) => {
-            return <ListItem key={i} item={item.collection.items} index={i}/>;
+            return <ListItem key={i} item={item.collection.items} meta={item.collection.meta} index={i}/>;
         })
 
     }

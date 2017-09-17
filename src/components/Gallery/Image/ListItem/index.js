@@ -28,7 +28,7 @@ export class ListItem extends Component {
 
     handleClick (event) {
         event.preventDefault();
-        this.props.dispatch(setDetailImage(this.state.images));
+        this.props.dispatch(setDetailImage({ images: this.state.images, meta: this.props.meta }));
         this.props.dispatch(routeActions.push('/gallery/detail'));
     }
 

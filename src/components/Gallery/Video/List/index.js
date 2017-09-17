@@ -35,7 +35,7 @@ export class List extends Component {
 
     renderVideos () {
         return this.state.videos.map((video, index) => {
-           return <ListItem key={index} video={video} index={index} />
+           return <ListItem key={index} video={video} meta={this.props.videos[index].collection.meta} index={index} />
        })
     }
 

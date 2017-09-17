@@ -21,7 +21,7 @@ export class ListItem extends Component {
 
     handleClick (event) {
         event.preventDefault();
-        this.props.dispatch(setDetailVideo(this.state.video));
+        this.props.dispatch(setDetailVideo({ video: this.state.video, meta: this.props.meta }));
         this.props.dispatch(routeActions.push('/gallery/detailvideo'));
     }
 

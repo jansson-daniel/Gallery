@@ -8,17 +8,10 @@ const loadVideos = (request, reply) => {
     getMedia(`https://images-api.nasa.gov/search?q=${request.payload.search}&media_type=video`, reply);
 };
 
-const getMedia = (searchUrl, reply) => {
-    const media = [];
-    const promises = [];
-
-    Request(searchUrl, (error, response, body) => {
-        if (error) return reply(error);
-
-        const data = JSON.parse(body);
-        const ids = data.collection.items.map((item) => {
-            return item.data[0].nasa_id;
-        });
+const getAssets = (ids) => {
+    return new Promise((resolve) => {
+        const assets = [];
+        const promises = [];
 
         ids.forEach((id) => {
             const first = id.charAt(0);
@@ -27,9 +20,7 @@ const getMedia = (searchUrl, reply) => {
             if (letterFirst) {
                 const promise = new Promise((resolve) => {
                     Request(`https://images-api.nasa.gov/asset/${id}`, (error, response, body) => {
-                        if (error) return reply(error);
-
-                        media.push(JSON.parse(body));
+                        assets.push(JSON.parse(body));
                         resolve();
                     })
                 });
@@ -37,8 +28,53 @@ const getMedia = (searchUrl, reply) => {
             }
         });
 
-        Promise.all(promises).then(() => {
-            return reply(media);
+        Promise.all(promises)
+            .then(() => {
+                resolve(assets);
+            })
+    });
+};
+
+const getMetaData = (ids) => {
+    return new Promise((resolve) => {
+    const data = [];
+    const promises = [];
+
+    ids.forEach((id, i) => {
+        const first = id.charAt(0);
+        const letterFirst = first.match(/[a-z]/i);
+
+        if (letterFirst) {
+            const promise = new Promise((resolve) => {
+                Request(`https://images-api.nasa.gov/metadata/${id}`, (error, response, body) => {
+                    const location = JSON.parse(body).location;
+
+                    Request(location, (error, response, body) => {
+                        data.push(JSON.parse(body));
+                        resolve();
+                    });
+                });
+            });
+            promises.push(promise);
+        }
+    });
+
+    Promise.all(promises)
+        .then(() => {
+            resolve(data)
+        });
+    });
+};
+
+const getMedia = (searchUrl, reply) => {
+    Request(searchUrl, (error, response, body) => {
+        const data = JSON.parse(body);
+        const ids = data.collection.items.map(item =>item.data[0].nasa_id);
+        const assets = getAssets(ids);
+        const metaData = getMetaData(ids);
+
+        Promise.all([assets, metaData]).then((result) => {
+            return reply(result);
         })
     });
 };
@@ -65,5 +101,5 @@ exports.register = (server, options, next) => {
 };
 
 exports.register.attributes = {
-  name: 'gallery'
+    name: 'gallery'
 };

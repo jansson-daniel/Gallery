@@ -4,9 +4,18 @@ export const loadImages = (search) => (dispatch) => {
     return request
         .post('/images/load', { 'search': search })
         .then(({ data }) => {
+            const images = data[0];
+            const meta = data[1];
+
+            images.forEach((item, i) => {
+                item.collection.meta = meta[i];
+            });
+
+            console.log(images);
+
             dispatch({
                 type: 'LOAD_IMAGES',
-                payload: data
+                payload: images
             });
         })
         .catch((error) => {
@@ -18,9 +27,16 @@ export const loadVideos = (search) => (dispatch) => {
     return request
         .post('/videos/load', { 'search': search })
         .then(({ data }) => {
+            const videos = data[0];
+            const meta = data[1];
+
+           videos.forEach((item, i) => {
+               item.collection.meta = meta[i];
+           });
+
             dispatch({
                 type: 'LOAD_VIDEOS',
-                payload: data
+                payload: videos
             });
         })
         .catch((error) => {
