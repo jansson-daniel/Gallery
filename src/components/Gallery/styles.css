@@ -93,6 +93,10 @@
     min-width: 100%;
 }
 
+.gallery .search input#search:hover, .gallery.search input#search:focus, .gallery.search input#search:active {
+    outline: 0;
+}
+
 @media screen and (orientation : landscape) {
     .gallery .search input#search {
         width: 83%;
