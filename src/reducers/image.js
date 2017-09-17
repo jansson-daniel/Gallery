@@ -20,8 +20,6 @@ export default handleActions({
             list: [],
             isLoading: 'loader'
         }
-
-
     },
     RESET_LOADING: (state) => {
         return {
@@ -42,10 +40,18 @@ export default handleActions({
             ...state,
             active: action.payload === 'image'
         }
-    }
+    },
+    SEARCH: (state, action) => {
+        return {
+            ...state,
+            list: [],
+            search: action.payload
+        }
+    },
 }, {
     list: [],
     detail: [],
     active: true,
-    isLoading: ''
+    isLoading: '',
+    search: ''
 })

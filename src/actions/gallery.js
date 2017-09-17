@@ -69,3 +69,10 @@ export const setStatus = (type) => (dispatch) => {
         payload: type
     });
 };
+
+export const setSearch = (search) => (dispatch) => {
+    dispatch({
+        type: 'SEARCH',
+        payload: search
+    });
+};

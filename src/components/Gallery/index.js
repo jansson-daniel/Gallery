@@ -7,7 +7,8 @@ import {
     loadVideos,
     resetMedia,
     setStatus,
-    activateLoader
+    activateLoader,
+    setSearch,
 } from '../../actions/gallery';
 
 import styles from './styles.css';
@@ -39,12 +40,12 @@ export class Gallery extends Component {
         }
 
         if (this.props.imageIsActive) {
-            this.setState({mediaType: 'image', image: 'active', video: ''});
+            this.setState({mediaType: 'image', image: 'active', video: '', search: this.props.search });
             if (this.state.search.length) {
                 this.props.dispatch(loadImages(this.state.search));
             }
         } else {
-            this.setState({mediaType: 'video', video: 'active', image: ''});
+            this.setState({mediaType: 'video', video: 'active', image: '', search: this.props.search });
             if (this.state.search.length) {
                 this.props.dispatch(loadVideos(this.state.search));
             }
@@ -87,6 +88,7 @@ export class Gallery extends Component {
 
     handleChange (event) {
         this.setState({ search: event.target.value });
+        this.props.dispatch(setSearch(event.target.value));
     }
 
     render () {
@@ -119,7 +121,8 @@ const mapStateToProps = (state) => ({
     videos: state.video.list,
     videoIsActive: state.video.active,
     imageIsActive: state.image.active,
-    isLoading: state.image.isLoading
+    isLoading: state.image.isLoading,
+    search: state.image.search
 });
 
 export default connect(mapStateToProps)(Gallery)
