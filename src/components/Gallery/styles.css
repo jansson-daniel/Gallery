@@ -120,5 +120,6 @@
 @media screen and (orientation : landscape) {
     .gallery .search input#search {
         width: 83%;
+        max-width: 83%;
     }
 }

@@ -94,7 +94,7 @@ export class Gallery extends Component {
                     <div className="search">
                         <a className="logo-link" href="/" alt="logo"><img className='logo' src="/images/logo.png" /></a>
                         <span onClick={this.handleClick} className="icon"><i className="fa fa-search" /></span>
-                        <input onChange={this.handleChange} type="search" id="search" placeholder="Search gallery" value={this.state.search} />
+                        <input onChange={this.handleChange} type="text" id="search" placeholder="Search gallery" value={this.state.search} />
                     </div>
                 </div>
                 <div className="media">
