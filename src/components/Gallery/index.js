@@ -20,6 +20,7 @@ export class Gallery extends Component {
         this.state = {
             mediaType: 'image',
             image: 'active',
+            placeHolder: 'Search for images or videos',
             video: '',
             isLoading: '',
             search: ''
@@ -66,18 +67,23 @@ export class Gallery extends Component {
             if (!this.props.images.length && this.state.search.length) {
                 this.props.dispatch(activateLoader());
                 this.props.dispatch(loadImages(this.state.search));
+            } else {
+                this.setState({ placeHolder: 'Search for images or videos'});
             }
         } else {
             this.props.dispatch(setStatus('video'));
             if (!this.props.videos.length && this.state.search.length) {
                 this.props.dispatch(activateLoader());
                 this.props.dispatch(loadVideos(this.state.search));
+            } else {
+                this.setState({ placeHolder: 'Search for images or videos'});
             }
         }
     }
 
     handleClick () {
         if (this.state.search.length) {
+            this.setState({ placeHolder: ''});
             this.props.dispatch(resetMedia());
             this.props.dispatch(activateLoader());
             this.state.image === 'active'
@@ -89,9 +95,15 @@ export class Gallery extends Component {
     handleChange (event) {
         this.setState({ search: event.target.value });
         this.props.dispatch(setSearch(event.target.value));
+
+        if (this.props.videos.length === 0 && this.props.images.length === 0) {
+            this.setState({ placeHolder: 'Search for images or videos'});
+        }
     }
 
     render () {
+        const placeHolder = this.state.placeHolder.length ? 'place-holder': '';
+
         return (
             <div className="gallery">
                 <div className="top-bar">
@@ -109,6 +121,7 @@ export class Gallery extends Component {
                     <div className={this.state.isLoading} />
                     { this.state.image === 'active' ? (<Image images={this.props.images} />) : (<Video videos={this.props.videos} />) }
                 </div>
+                <p className={placeHolder}>{this.state.placeHolder}</p>
             </div>
         )
     }
