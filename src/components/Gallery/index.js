@@ -42,12 +42,20 @@ export class Gallery extends Component {
 
         if (this.props.imageIsActive) {
             this.setState({mediaType: 'image', image: 'active', video: '', search: this.props.search });
+            if (this.props.images.length) {
+                this.setState({ placeHolder: ''});
+            }
             if (this.state.search.length) {
+                this.setState({ placeHolder: ''});
                 this.props.dispatch(loadImages(this.state.search));
             }
         } else {
             this.setState({mediaType: 'video', video: 'active', image: '', search: this.props.search });
+            if (this.props.videos.length) {
+                this.setState({ placeHolder: ''});
+            }
             if (this.state.search.length) {
+                this.setState({ placeHolder: ''});
                 this.props.dispatch(loadVideos(this.state.search));
             }
         }
@@ -95,6 +103,11 @@ export class Gallery extends Component {
     handleChange (event) {
         this.setState({ search: event.target.value });
         this.props.dispatch(setSearch(event.target.value));
+
+        if (event.target.value.length === 0) {
+            this.props.dispatch(resetMedia());
+            this.setState({ placeHolder: 'Search for images or videos'});
+        }
 
         if (this.props.videos.length === 0 && this.props.images.length === 0) {
             this.setState({ placeHolder: 'Search for images or videos'});
