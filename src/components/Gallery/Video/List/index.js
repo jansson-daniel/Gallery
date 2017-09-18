@@ -17,26 +17,39 @@ export class List extends Component {
 
     componentWillReceiveProps (nextProps) {
         const videos = [];
-        nextProps.videos.forEach((video) => {
-            if (video.hasOwnProperty('collection')) {
-                const videoArray = video.collection.items.filter((item) => {
-                    if (item && item.hasOwnProperty('href')) {
-                        return item.href.includes('mobile.mp4') || item.href.includes('mobile_thumb_00002');
-                    }
-                });
-                if (videoArray) {
-                    videos.push(videoArray);
-                }
-            }
-        });
 
-        this.setState({ videos })
+        if (typeof nextProps.videos !== 'string') {
+            nextProps.videos.forEach((video) => {
+                if (video.hasOwnProperty('collection')) {
+                    const videoArray = video.collection.items.filter((item) => {
+                        if (item && item.hasOwnProperty('href')) {
+                            return item.href.includes('mobile.mp4') || item.href.includes('mobile_thumb_00002');
+                        }
+                    });
+                    if (videoArray) {
+                        videos.push(videoArray);
+                    }
+                }
+            });
+
+            this.setState({videos})
+        } else {
+            this.setState({ videos: nextProps.videos });
+        }
     }
 
     renderVideos () {
-        return this.state.videos.map((video, index) => {
-           return <ListItem key={index} video={video} meta={this.props.videos[index].collection.meta} index={index} />
-       })
+        if (typeof this.state.videos === 'string') {
+            return <p className="sorry">{this.state.videos}</p>
+        } else {
+            return this.state.videos.map((video, index) => {
+                const meta = this.props.videos[index].hasOwnProperty('collection') ? this.props.videos[index].collection.meta : {};
+
+                if (video.length === 2) {
+                    return <ListItem key={index} video={video} meta={meta} index={index}/>
+                }
+            })
+        }
     }
 
     render () {

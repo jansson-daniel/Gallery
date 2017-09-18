@@ -18,9 +18,13 @@ export class List extends Component {
     }
 
     renderImages () {
-        return this.state.images.map((item, i) => {
-            return <ListItem key={i} item={item.collection.items} meta={item.collection.meta} index={i}/>;
-        })
+        if (typeof this.state.images === 'string') {
+            return <p className="sorry">{this.state.images}</p>
+        } else {
+            return this.state.images.map((item, i) => {
+                return <ListItem key={i} item={item.collection.items} meta={item.collection.meta} index={i}/>;
+            })
+        }
 
     }
 

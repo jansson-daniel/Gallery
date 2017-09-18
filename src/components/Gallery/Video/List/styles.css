@@ -8,3 +8,12 @@
     width: 100%;
     margin: 86px 0 0 0;
 }
+
+.videos .sorry {
+    margin-top: 50px;
+    color: #ddd;
+    width: 60%;
+    text-align: center;
+    line-height: 24px;
+    font-family: 'Aviano Future Black Fast', 'sans-serif';
+}

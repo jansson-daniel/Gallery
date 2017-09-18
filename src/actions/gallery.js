@@ -4,12 +4,16 @@ export const loadImages = (search) => (dispatch) => {
     return request
         .post('/images/load', { 'search': search })
         .then(({ data }) => {
-            const images = data[0];
-            const meta = data[1];
+            let images = data[0];
+            let meta = data[1];
 
             images.forEach((item, i) => {
                 item.collection.meta = meta[i];
             });
+
+            if (!images.length) {
+                images = 'Sorry, we could not find what you are looking for...';
+            }
 
             dispatch({
                 type: 'LOAD_IMAGES',
@@ -25,12 +29,18 @@ export const loadVideos = (search) => (dispatch) => {
     return request
         .post('/videos/load', { 'search': search })
         .then(({ data }) => {
-            const videos = data[0];
-            const meta = data[1];
+            let videos = data[0];
+            let meta = data[1];
 
            videos.forEach((item, i) => {
-               item.collection.meta = meta[i];
+              if (item.hasOwnProperty('collection')) {
+                  item.collection.meta = meta[i];
+              }
            });
+
+            if (!videos.length) {
+                videos = 'Sorry, we could not find what you are looking for...';
+            }
 
             dispatch({
                 type: 'LOAD_VIDEOS',

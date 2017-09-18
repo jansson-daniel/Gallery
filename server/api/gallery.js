@@ -45,14 +45,19 @@ const getMetaData = (ids) => {
         const letterFirst = first.match(/[a-z]/i);
 
         if (letterFirst) {
-            const promise = new Promise((resolve) => {
+            const promise = new Promise((resolve, reject) => {
                 Request(`https://images-api.nasa.gov/metadata/${id}`, (error, response, body) => {
                     const location = JSON.parse(body).location;
 
-                    Request(location, (error, response, body) => {
-                        data.push(JSON.parse(body));
+                    if (location) {
+                        Request(location, (error, response, body) => {
+                            data.push(JSON.parse(body));
+                            resolve();
+                        });
+                    } else {
+                        data.push({});
                         resolve();
-                    });
+                    }
                 });
             });
             promises.push(promise);
@@ -70,8 +75,8 @@ const getMedia = (searchUrl, reply) => {
     Request(searchUrl, (error, response, body) => {
         const data = JSON.parse(body);
         const ids = data.collection.items.map(item =>item.data[0].nasa_id);
-        const assets = getAssets(ids);
-        const metaData = getMetaData(ids);
+        const assets = getAssets(ids, reply);
+        const metaData = getMetaData(ids, reply);
 
         Promise.all([assets, metaData]).then((result) => {
             return reply(result);
